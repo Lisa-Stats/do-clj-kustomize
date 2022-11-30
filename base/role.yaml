@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: my-service-account
+rules:
+  - apiGroups: ["core"]
+    resources: ["services","pods"]
+    verbs: ["get", "watch", "list"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["get", "watch", "list"]
+
+#     Error from server (Forbidden): jobs.batch "migration-job" is forbidden: User "system:serviceaccount:dev:default" c │
+# │ annot get resource "jobs" in API group "batch" in the namespace "dev"
+# The connection to the server localhost:8080 was refused - did you specify the right host or port?
