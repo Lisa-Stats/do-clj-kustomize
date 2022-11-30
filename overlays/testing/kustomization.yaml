@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../../base
+- namespace.yaml
+- test_config_map.yaml
+
+namespace: testing
+
+images:
+- name: IMAGE:TAG
+  newName: registry.digitalocean.com/nginx-container/clojure
+  newTag: "1.0"
+
+labels:
+  - pairs:
+      env: testing
+    includeTemplates: true
+
+patchesStrategicMerge:
+- add_node_affinity.yaml
