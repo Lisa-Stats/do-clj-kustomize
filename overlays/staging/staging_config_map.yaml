@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    env: staging
+  name: config
+  namespace: staging
+data:
+  db_name: db_staging_name_value
