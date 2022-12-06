@@ -2,6 +2,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: migration-job
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 spec:
   ttlSecondsAfterFinished: 100
   backoffLimit: 1
@@ -9,12 +11,9 @@ spec:
     spec:
       restartPolicy: Never
       containers:
-        - name: migration
-          image: registry.digitalocean.com/nginx-container/clojure:5.0
-          command: ["lein", "repl"]
-          #   - "*ns*"
-          #   - "(require '[util.migration])"
-          #   - "(util.migration/init)"
+        - name: fake-migration
+          image: alpine:latest
+          command: ["sleep", "30"]
           env:
             - name: DB_URL
               valueFrom:
