@@ -4,6 +4,7 @@ metadata:
   name: migration-job
   annotations:
     argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   ttlSecondsAfterFinished: 100
   backoffLimit: 1
