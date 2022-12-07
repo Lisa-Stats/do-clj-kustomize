@@ -14,7 +14,6 @@ spec:
       labels:
         app: clojure
     spec:
-      serviceAccountName: my-service-account
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -25,13 +24,6 @@ spec:
                     values:
                       - clojure
               topologyKey: "kubernetes.io/hostname"
-      initContainers:
-          - name: migrations-waiting-init
-            image: ghcr.io/groundnuty/k8s-wait-for:v1.6
-            imagePullPolicy: IfNotPresent
-            args:
-              - "job"
-              - "migration-job"
       containers:
         - name: clojure
           image: IMAGE:TAG
@@ -40,12 +32,6 @@ spec:
           volumeMounts:
             - name: db-url-file
               mountPath: /etc/secret
-          env:
-            - name: DB_URL
-              valueFrom:
-                secretKeyRef:
-                  name: db-url
-                  key: DB_URL
       volumes:
         - name: db-url-file
           secret:

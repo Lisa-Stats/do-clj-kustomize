@@ -4,7 +4,3 @@ kind: Kustomization
 resources:
   - clj-deployment.yaml
   - clj-service.yaml
-  - job-migration.yaml
-  - serviceaccount.yaml
-  - role.yaml
-  - role-binding.yaml

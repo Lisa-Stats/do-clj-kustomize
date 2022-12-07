@@ -18,12 +18,13 @@ labels: # more fine-grain control than commonLabels
     includeTemplates: true
 
 secretGenerator:
-- name: db-url
-  envs:
-  - .dev.env
 - name: app-environment
   files:
   - app-environment=environment.txt
+
+generatorOptions:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
 
 patchesStrategicMerge:
 - add_node_affinity.yaml
