@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - clj-deployment.yaml
   - clj-service.yaml
+  - migration-job.yaml
