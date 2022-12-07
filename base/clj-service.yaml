@@ -4,6 +4,7 @@ metadata:
   name: clojure-service
   annotations:
     argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   type: NodePort
   selector:
