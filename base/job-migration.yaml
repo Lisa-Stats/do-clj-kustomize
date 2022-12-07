@@ -14,9 +14,3 @@ spec:
         - name: fake-migration
           image: alpine:latest
           command: ["sleep", "30"]
-          env:
-            - name: DB_URL
-              valueFrom:
-                secretKeyRef:
-                  name: db-url
-                  key: DB_URL

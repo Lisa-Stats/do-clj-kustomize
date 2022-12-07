@@ -32,12 +32,6 @@ spec:
           volumeMounts:
             - name: db-url-file
               mountPath: /etc/secret
-          env:
-            - name: DB_URL
-              valueFrom:
-                secretKeyRef:
-                  name: db-url
-                  key: DB_URL
       volumes:
         - name: db-url-file
           secret:
