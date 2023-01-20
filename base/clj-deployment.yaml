@@ -29,10 +29,9 @@ spec:
           image: IMAGE:TAG
           ports:
             - containerPort: 8090
-          volumeMounts:
-            - name: db-url-file
-              mountPath: /etc/secret
-      volumes:
-        - name: db-url-file
-          secret:
-            secretName: app-environment
+          env:
+            - name: ENV_TYPE
+              valueFrom:
+                configMapKeyRef:
+                  name: app-env
+                  key: env

@@ -4,14 +4,13 @@ kind: Kustomization
 bases:
 - ../../base
 - namespace.yaml
-- test_config_map.yaml
 
 namespace: testing
 
 images:
 - name: IMAGE:TAG
   newName: registry.digitalocean.com/nginx-container/clojure
-  newTag: "1.0"
+  newTag: "5.0"
 
 labels:
   - pairs:
@@ -19,4 +18,4 @@ labels:
     includeTemplates: true
 
 patchesStrategicMerge:
-- add_node_affinity.yaml
+- add-node-affinity.yaml
