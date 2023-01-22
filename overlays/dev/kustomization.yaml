@@ -10,17 +10,17 @@ namespace: dev
 images:
 - name: IMAGE:TAG
   newName: registry.digitalocean.com/nginx-container/clojure
-  newTag: "5.0"
+  newTag: 9d688574061884f6c49d2bc776598030ac741103
 
-labels: # more fine-grain control than commonLabels
-  - pairs:
-      env: dev
-    includeTemplates: true
+labels:
+- includeTemplates: true
+  pairs:
+    env: dev
 
 configMapGenerator:
-- name: app-env
-  envs:
+- envs:
   - dev.env
+  name: app-env
 
 generatorOptions:
   annotations:
